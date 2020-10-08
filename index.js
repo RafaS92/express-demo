@@ -1,3 +1,4 @@
+const config = require("config");
 const Joi = require("joi");
 const helmet = require("helmet");
 const morgan = require("morgan");
@@ -14,10 +15,14 @@ app.use(express.static("public"));
 
 app.use(helmet());
 
-if (app.get("env") === "development") {
-  app.use(morgan("tiny"));
-  console.log("morgan plis");
-}
+console.log("Application Name" + config.get("name"));
+console.log("Mail service" + config.get("mail.host"));
+console.log("Mail passs" + config.get("mail.password"));
+
+// if (app.get("env") === "development") {
+//   app.use(morgan("tiny"));
+//   console.log("morgan plis");
+// }
 
 app.use(logger);
 
